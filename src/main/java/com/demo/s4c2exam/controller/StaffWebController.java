@@ -1,17 +1,17 @@
 package com.demo.s4c2exam.controller;
 
-import com.demo.s4c2exam.model.Employee;
-import com.demo.s4c2exam.service.EmployeeService;
+import com.demo.s4c2exam.model.Staffs;
+import com.demo.s4c2exam.service.StaffService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/employees")
-public class EmployeeWebController {
-    private final EmployeeService svc;
+public class StaffWebController {
+    private final StaffService svc;
 
-    public EmployeeWebController(EmployeeService svc) {
+    public StaffWebController(StaffService svc) {
         this.svc = svc;
     }
 
@@ -23,13 +23,13 @@ public class EmployeeWebController {
 
     @GetMapping("/new")
     public String createForm(Model model) {
-        model.addAttribute("employee", new Employee());
+        model.addAttribute("employee", new Staffs());
         return "employees/form"; // form for create
     }
 
     @PostMapping
-    public String save(@ModelAttribute Employee employee) {
-        svc.add(employee);
+    public String save(@ModelAttribute Staffs staffs) {
+        svc.add(staffs);
         return "redirect:/employees";
     }
 
@@ -40,8 +40,8 @@ public class EmployeeWebController {
     }
 
     @PostMapping("/update/{id}")
-    public String update(@PathVariable Long id, @ModelAttribute Employee employee) {
-        svc.update(id, employee);
+    public String update(@PathVariable Long id, @ModelAttribute Staffs staffs) {
+        svc.update(id, staffs);
         return "redirect:/employees";
     }
 }

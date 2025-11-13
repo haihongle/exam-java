@@ -1,30 +1,30 @@
 package com.demo.s4c2exam.service;
 
-import com.demo.s4c2exam.model.Employee;
-import com.demo.s4c2exam.repo.EmployeeRepository;
+import com.demo.s4c2exam.model.Staffs;
+import com.demo.s4c2exam.repo.StaffRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class EmployeeService {
-    private final EmployeeRepository repo;
+public class StaffService {
+    private final StaffRepository repo;
 
-    public EmployeeService(EmployeeRepository repo) {
+    public StaffService(StaffRepository repo) {
         this.repo = repo;
     }
 
-    public List<Employee> getAll() {
+    public List<Staffs> getAll() {
         return repo.findAll();
     }
 
-    public Employee add(Employee e) {
+    public Staffs add(Staffs e) {
         e.setId(null);
         return repo.save(e);
     }
 
-    public Optional<Employee> update(Long id, Employee e) {
+    public Optional<Staffs> update(Long id, Staffs e) {
         return repo.findById(id).map(existing -> {
             existing.setName(e.getName());
             existing.setSalary(e.getSalary());
@@ -32,7 +32,7 @@ public class EmployeeService {
         });
     }
 
-    public Optional<Employee> findById(Long id) {
+    public Optional<Staffs> findById(Long id) {
         return repo.findById(id);
     }
 }

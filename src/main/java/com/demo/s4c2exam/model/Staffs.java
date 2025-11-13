@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "employees")
-public class Employee {
+public class Staffs {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -12,9 +12,9 @@ public class Employee {
     private String name;
     private Double salary;
 
-    public Employee() {}
+    public Staffs() {}
 
-    public Employee(String name, Double salary) {
+    public Staffs(String name, Double salary) {
         this.name = name;
         this.salary = salary;
     }
